@@ -2,6 +2,7 @@
 
 """
 Çizim Fonksiyonlari
+Çizgi, diktörtgen, çember çizme ve yazı yazma işlemleri
 """
 
 import rospy
@@ -18,15 +19,15 @@ class Kamera():
         rospy.spin() #sürekli yapılması için
         
     def kameraCallback(self,mesaj):
-        img = self.bridge.imgmsg_to_cv2(mesaj,"bgr8") # image mesajını cv2ya çevir renkli
+        img = self.bridge.imgmsg_to_cv2(mesaj,"bgr8") # image mesajını cv2ya çevirir
         cv2.line(img,(0,0),(250,250),(255,0,0),5)   
-        #imgin üzerine,0,0dan başlayan 250ye250de biten,mavi renkli, 5 kalınlıklı çizgi
+        # (imgin üzerine,0,0'dan başlayan (250,250)de biten,mavi renkli, 5 kalınlıklı) çizgi
         cv2.rectangle(img,(250,175),(500,125),(123,23,200),3)
-        #imgin üzerine,sol üst,sağ alt köşe,renk,kalınlık dikdörtgen
+        # (imgin üzerine,sol üst köşe,sağ alt köşe,renk,kalınlık) çizen dikdörtgen
         cv2.circle(img,(100,100),10,(0,0,255),-1) #-1 içini doldurur
-        #imgin üzerine merkez noktası,yarıçapı,renk,kalınlık çizen çember
+        # (imgin üzerine, merkez noktası,yarıçapı,renk,kalınlık) çizen çember
         cv2.putText(img,"ROS",(0,250),cv2.FONT_HERSHEY_SIMPLEX,2,(255,255,255),2)
-        # imgin üzerine, yazı,başlangıç,font,yazı boyutu, renk, kalınlık
+        # (imgin üzerine, yazı,başlangıç,font,yazı boyutu, renk, kalınlık)
         cv2.imshow("Robot Kamerasi",img) #imgi göster
         cv2.waitKey(1)
         
