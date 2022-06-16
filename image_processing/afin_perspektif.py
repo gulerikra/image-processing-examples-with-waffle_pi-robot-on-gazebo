@@ -2,8 +2,7 @@
 
 """
 Geometrik Dönüşümler: Afin,Perspektif
-Afin = k2yi k1'in yarisi aldik diye 640a 480in yarisinda orjinal foto yarisi siyahti
-perspektifte sonuç olarak ekrandaki yola daha tepeden baktik ilerideki boşluğu yok ettşk falan 
+Perspektif dönüşüm yaparak zemine daha yukarıdan bakmış oluruz
 """
 
 import rospy
@@ -18,10 +17,10 @@ class Kamera():
         self.bridge = CvBridge()   #köprü kurma
         rospy.Subscriber("camera/rgb/image_raw",Image,self.kameraCallback)
         # ("konusu",Image mesajı üzerinden işlemleri gerçekleştiren,abone olunduğunda gidilecek fonksiyon)
-        rospy.spin() #sürekli yapılması için
+        rospy.spin() #işelemin sürekli yapılması için
         
     def kameraCallback(self,mesaj):
-        img = self.bridge.imgmsg_to_cv2(mesaj,"bgr8") # image mesajını cv2ya çevir renkli
+        img = self.bridge.imgmsg_to_cv2(mesaj,"bgr8") # image mesajını cv2ya çevirir
         # k1 = np.float32([[30,500],[200,500],[30,600]]) #rastgele noktalar aldık
         # k2 = np.float32([[15,500],[100,500],[15,600]]) #k1'in ilk değerlerinin yarıya inmiş hali
         # M = cv2.getAffineTransform(k1,k2)  #ki ve k2 arasında dönüşüm matrisi bul
