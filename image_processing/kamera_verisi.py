@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Uygulama 5: Kameradan Gelen Veriyi Görüntüye Çevirme
+Kameradan Gelen Veriyi Görüntüye Çevirme
 """
 
 import rospy
@@ -17,7 +17,7 @@ class RobotKamera():
         rospy.spin()
     
     def kameraCallback(self,mesaj):
-        self.foto = self.bridge.imgmsg_to_cv2(mesaj,"bgr8")
+        self.foto = self.bridge.imgmsg_to_cv2(mesaj,"bgr8") #bridge ile kamera verisini görüntüye çevirme
         cv2.imshow("Robot Kamerasi",self.foto)
         cv2.waitKey(1)
 
