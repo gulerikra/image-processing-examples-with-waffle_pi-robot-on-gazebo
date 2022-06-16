@@ -18,7 +18,7 @@ class Kamera():
         
     def kameraCallback(self,mesaj):
         img = self.bridge.imgmsg_to_cv2(mesaj,"mono8")  # image mesajını cv2ya çevir gri
-        kenarlar = cv2.Canny(img,100,200,5)  #değerler değişebilir kenar bulma için
+        kenarlar = cv2.Canny(img,100,200,5)  #değerler değişebilir, Canny kenar bulma için kullanılır
         cv2.imshow("Robot Kamerasi",img)
         cv2.imshow("Canny Kenarlar",kenarlar)
         cv2.waitKey(1)
