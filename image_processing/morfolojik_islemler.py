@@ -24,7 +24,7 @@ class Kamera():
         kernel = np.ones((11,11),np.uint8) #11e 11 boyutunda 1lerden oluşan uint8 formatında bir kernel
         e_img = cv2.erode(esiklenmis,kernel)  #görüntüdeki gürültüleri kaldırdı
         d_img = cv2.dilate(esiklenmis,kernel) #görüntüdeki kopuklukları(gürültüyü birleştirdi gibi) tamamladı 
-        f_img = d_img - e_img  #şeklin şeklini (dışını) çizdi gibi
+        f_img = d_img - e_img  # şeklin dışını çizdi gibi
         o_img = cv2.morphologyEx(esiklenmis,cv2.MORPH_OPEN,kernel)  #şeklin dışındaki gürültüleri kaldırır
         c_img = cv2.morphologyEx(esiklenmis,cv2.MORPH_CLOSE,kernel) #şeklin içindeki gürültüleri kaldırır
         cv2.imshow("Robot Kamerasi",img)
